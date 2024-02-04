@@ -5,50 +5,47 @@
 #include <QRegularExpression>
 #include <QtWidgets>
 #include <QTextStream>
-#include <QTimer>
-#include <QFile>
-#include <QTextStream>
 #include <QDate>
-#include <QTime>
 #include <QDir>
+#include <QFile>
+#include <QTime>
+#include <QTimer>
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
-    connect(ui->pushButton00,         &QPushButton::clicked, this, &MainWindow::handleButtonPress);
-    connect(ui->pushButton01,         &QPushButton::clicked, this, &MainWindow::handleButtonPress);
-    connect(ui->pushButton02,         &QPushButton::clicked, this, &MainWindow::handleButtonPress);
-    connect(ui->pushButton03,         &QPushButton::clicked, this, &MainWindow::handleButtonPress);
-    connect(ui->pushButton04,         &QPushButton::clicked, this, &MainWindow::handleButtonPress);
-    connect(ui->pushButton05,         &QPushButton::clicked, this, &MainWindow::handleButtonPress);
-    connect(ui->pushButton06,         &QPushButton::clicked, this, &MainWindow::handleButtonPress);
-    connect(ui->pushButton07,         &QPushButton::clicked, this, &MainWindow::handleButtonPress);
-    connect(ui->pushButton08,         &QPushButton::clicked, this, &MainWindow::handleButtonPress);
-    connect(ui->pushButton09,         &QPushButton::clicked, this, &MainWindow::handleButtonPress);
+    // 버튼 클릭 시그널을 handleButtonPress 슬롯에 연결하는 람다 함수
+    auto connectButton = [this](QPushButton* button)
+    {
+        connect(button, &QPushButton::clicked, this, &MainWindow::handleButtonPress);
+    };
 
-    connect(ui->pushButton_point,     &QPushButton::clicked, this, &MainWindow::handleButtonPress);
-    connect(ui->pushButton_plus,      &QPushButton::clicked, this, &MainWindow::handleButtonPress);
-    connect(ui->pushButton_minus,     &QPushButton::clicked, this, &MainWindow::handleButtonPress);
-    connect(ui->pushButton_multiple,  &QPushButton::clicked, this, &MainWindow::handleButtonPress);
-    connect(ui->pushButton_division,  &QPushButton::clicked, this, &MainWindow::handleButtonPress);
-    connect(ui->pushButton_equal,     &QPushButton::clicked, this, &MainWindow::calculateResult);
+    // 계산기 버튼 목록
+    QList<QPushButton*> buttons = {
+                                    ui->pushButton00, ui->pushButton01, ui->pushButton02, ui->pushButton03, ui->pushButton04,
+                                    ui->pushButton05, ui->pushButton06, ui->pushButton07, ui->pushButton08, ui->pushButton09,
+                                    ui->pushButton_point, ui->pushButton_plus, ui->pushButton_minus, ui->pushButton_multiple,
+                                    ui->pushButton_division, ui->pushButton_clear, ui->pushButton_left, ui->pushButton_right,
+                                    ui->pushButton_backspace
+    };
 
-    connect(ui->pushButton_clear,     &QPushButton::clicked, this, &MainWindow::clearInputOutput);
-    connect(ui->pushButton_left,      &QPushButton::clicked, this, &MainWindow::handleParenthesisPress);
-    connect(ui->pushButton_right,     &QPushButton::clicked, this, &MainWindow::handleParenthesisPress);
-    connect(ui->pushButton_backspace, &QPushButton::clicked, this, &MainWindow::handleBackspacePress);
+    // 각 버튼을 connectButton 람다 함수를 사용하여 클릭 이벤트에 연결
+    for (auto& button : buttons)
+        connectButton(button);
 
-    ui->lineEdit_input->setPlaceholderText("Enter the formula.");
-    QRegularExpression inputRegex("[^0-9()*/+-=.]");
-    QValidator *inputValidator = new QRegularExpressionValidator(inputRegex, this);
-    ui->lineEdit_input->setValidator(inputValidator);
-
+    connect(ui->pushButton_equal, &QPushButton::clicked, this, &MainWindow::calculateResult);   // '=' 버튼 클릭 시 결과 계산 함수 호출
+    ui->lineEdit_input->setPlaceholderText("Enter the formula.");                               // 입력 필드의 플레이스홀더 텍스트 설정
     ui->lineEdit_output->setPlaceholderText("Result will be displayed.");
-    QRegularExpression outputRegex("[^0-9()*/+-=.]");
-    QValidator *outputValidator = new QRegularExpressionValidator(outputRegex, this);
-    ui->lineEdit_output->setValidator(outputValidator);
 
+    // 연속으로 지울 경우 대략 0.1초 정도 지연이 될 경우 연속적으로 제거
+    eraseTimer = new QTimer(this);                                                              // 타이머 초기화
+    eraseTimer->setInterval(100);                                                               // 100ms 간격으로 설정
+    connect(eraseTimer, &QTimer::timeout, this, &MainWindow::handleBackspacePress);             // 타이머 신호를 handleBackspacePress 함수에 연결
+    connect(ui->pushButton_backspace, &QPushButton::pressed, eraseTimer, static_cast<void (QTimer::*)()>(&QTimer::start));  // 백스페이스 버튼의 pressed와 released 신호를 타이머의 시작과 정지에 연결
+    connect(ui->pushButton_backspace, &QPushButton::released, eraseTimer, &QTimer::stop);
+
+	// Social Calculator
     QStringList items = {"Sports", "Math", "Chemistry", "Life", "Tax", "Income", "Time", "Unit"};
     items.sort();
     QStandardItemModel *model = new QStandardItemModel(this);
@@ -68,98 +65,57 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::handleButtonPress()
+void MainWindow::handleButtonPress() // 사용자가 계산기 버튼을 클릭할 때마다 적절한 동작을 실행
 {
     QPushButton *button = qobject_cast<QPushButton *>(sender());
-    if (button)
-    {
-        QString inputText = ui->lineEdit_input->text();
-        QString outputText = ui->lineEdit_output->text();
+    if (!button) return;
 
-        auto saveToFile = [&]() {
-            QString downloadsPath = QDir::homePath() + "/Downloads";
-            QDir().mkpath(downloadsPath);
-            QString fileName = downloadsPath + "/" + QDate::currentDate().toString("yyyy-MM-dd_BaseCalculator") + ".txt";
-            QFile file(fileName);
+    if (button == ui->pushButton_clear) {
+        clearInputOutput();
+        return;
+    }
 
-            if (file.open(QIODevice::WriteOnly | QIODevice::Append))
-            {
-                QTextStream out(&file);
-                out << QTime::currentTime().toString("[HH:mm:ss]") << "\n";
-                out << "Input: " << inputText << "\n";
-                out << "Output: " << outputText << "\n";
-                out << "◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆" << "\n\n";
-                file.close();
-            }
-        };
+    if (button == ui->pushButton_backspace) {
+        handleBackspacePress();
+        return;
+    }
 
-        auto clearInputOutput = [&]()
-        {
-            ui->lineEdit_input->clear();
-            ui->lineEdit_output->clear();
-        };
+    if (button == ui->pushButton_equal) {
+        calculateResult();
+        return;
+    }
 
-        if (!inputText.isEmpty() && !outputText.isEmpty())
-        {
-            saveToFile();
-            clearInputOutput();
-        }
+    QString currentText = ui->lineEdit_input->text();
+    QString newText = button->text(); // 기본적으로 버튼의 텍스트 사용
 
-        if (button == ui->pushButton_clear ||
-            (!inputText.isEmpty() && !outputText.isEmpty() &&
-             (button == ui->pushButton_plus || button == ui->pushButton_minus ||
-              button == ui->pushButton_point || button->objectName().startsWith("pushButton00") ||
-              button->objectName().startsWith("pushButton01") || button->objectName().startsWith("pushButton02") ||
-              button->objectName().startsWith("pushButton03") || button->objectName().startsWith("pushButton04") ||
-              button->objectName().startsWith("pushButton05") || button->objectName().startsWith("pushButton06") ||
-              button->objectName().startsWith("pushButton07") || button->objectName().startsWith("pushButton08") ||
-              button->objectName().startsWith("pushButton09"))))
-        {
-            clearInputOutput();
-        }
-        else
-        {
-            QString currentText = ui->lineEdit_input->text();
-            ui->lineEdit_input->setText(currentText);
-        }
+    // 소수점 처리
+    if (button == ui->pushButton_point && currentText.contains('.')) {
+        return; // 이미 소수점이 있으면 추가하지 않음
+    }
 
-        QString currentText = ui->lineEdit_input->text();
-        QChar lastChar = currentText.isEmpty() ? QChar() : currentText.back();
-
-        if (button == ui->pushButton_point)
-        {
-            int lastIndex = currentText.length() - 1;
-            while (lastIndex >= 0 && (currentText[lastIndex].isDigit() || currentText[lastIndex] == '.'))
-            {
-                if (currentText[lastIndex] == '.')
-                    return;
-                lastIndex--;
-            }
-            ui->lineEdit_input->setText(currentText + ".");
-        }
-        else
-        {
-            QString newText;
-            if (button == ui->pushButton_plus)
-                newText = "+";
-            else if (button == ui->pushButton_minus)
-                newText = "-";
-            else if (button == ui->pushButton_multiple)
-                newText = "*";
-            else if (button == ui->pushButton_division)
-                newText = "/";
-            else if (button == ui->pushButton_left)
-            {
-                if (lastChar.isDigit() || lastChar == ')')
-                    newText = "*(";
-                else
-                    newText = "(";
-            }
-            else if (button->objectName().startsWith("pushButton0"))
-                newText = button->objectName().right(1);
-            ui->lineEdit_input->setText(currentText + newText);
+    // 괄호 처리
+    if (button == ui->pushButton_left || button == ui->pushButton_right) {
+        int openParentheses = currentText.count('(');
+        int closeParentheses = currentText.count(')');
+        if (button == ui->pushButton_right && openParentheses <= closeParentheses) {
+            return; // 닫는 괄호가 더 필요하지 않으면 추가하지 않음
         }
     }
+
+    // 사칙연산 처리
+    if (button == ui->pushButton_plus || button == ui->pushButton_minus ||
+        button == ui->pushButton_multiple || button == ui->pushButton_division) {
+        if (!currentText.isEmpty()) {
+            QChar lastChar = currentText[currentText.length() - 1];
+            if (lastChar.isDigit() || lastChar == ')') {
+                currentText += newText; // 연산자 추가
+            }
+        }
+    } else {
+        currentText += newText; // 기타 문자 추가
+    }
+
+    ui->lineEdit_input->setText(currentText);
 }
 
 void MainWindow::calculateResult()
@@ -177,102 +133,94 @@ void MainWindow::clearInputOutput()
     ui->lineEdit_output->clear();
 }
 
-void MainWindow::handleParenthesisPress()
+void MainWindow::handleParenthesisPress()   // 괄호 버튼 클릭 시 괄호를 입력 필드에 추가하는 함수
 {
-    QPushButton *button = qobject_cast<QPushButton *>(sender());
-    if (button)
+    QPushButton *button = qobject_cast<QPushButton *>(sender());        // 클릭된 버튼 객체를 확인
+    if (button)                                                         // 유효한 버튼 객체인 경우
     {
-        QString newText = button == ui->pushButton_left ? "(" : ")";
-        QString currentText = ui->lineEdit_input->text();
-        ui->lineEdit_input->setText(currentText + newText);
+        QString newText = button == ui->pushButton_left ? "(" : ")";    // 왼쪽 괄호 버튼이면 "(" 추가, 아니면 ")"
+        QString currentText = ui->lineEdit_input->text();               // 현재 입력 필드의 텍스트 가져오기
+        ui->lineEdit_input->setText(currentText + newText);             // 괄호를 현재 텍스트에 추가
     }
 }
 
 double MainWindow::evaluateExpression(const QString &expression)
 {
-    QList<double> numbers;
-    QList<QChar> operators;
+    QList<double> numbers;              // 숫자 저장
+    QList<QChar> operators;             // 연산자 저장
 
-    QString streamInput(expression);
+    QString streamInput(expression);    // 입력된 식을 스트림으로 변환
     QTextStream iss(&streamInput);
 
-    while (!iss.atEnd())
+    while (!iss.atEnd()) // 스트림 끝까지 반복
     {
         QChar next;
-        iss >> next;
-        if (next.isDigit() || next == '.')
+        iss >> next;                        // 다음 문자 읽기
+        if (next.isDigit() || next == '.')  // 숫자나 소수점인 경우
         {
-            iss.seek(iss.pos() - 1);
+            iss.seek(iss.pos() - 1);        // 스트림 위치 조정
             double value;
-            iss >> value;
-            numbers.append(value);
+            iss >> value;                   // 숫자 읽기
+            numbers.append(value);          // 숫자 리스트에 추가
         }
-        else
+        else                                // 연산자인 경우
         {
-            if (next == '(')
+            if (next == '(')                // 여는 괄호
                 operators.append(next);
-            else if (next == ')')
+            else if (next == ')')           // 닫는 괄호
             {
-                while (!operators.isEmpty() && operators.last() != '(')
+                while (!operators.isEmpty() && operators.last() != '(')     // 여는 괄호를 만날 때까지 연산 실행
                     executeTopOperation(numbers, operators);
-                operators.takeLast();
+                operators.takeLast();                   // 여는 괄호 제거
             }
-            else if (isOperator(next))
+            else if (isOperator(next))                  // 사칙연산자인 경우
             {
-                while (!operators.isEmpty() && precedence(operators.last()) >= precedence(next))
+                while (!operators.isEmpty() && precedence(operators.last()) >= precedence(next))    // 연산 우선순위를 고려하여 연산 실행
                     executeTopOperation(numbers, operators);
-                operators.append(next);
+                operators.append(next);                                     // 연산자 추가
             }
         }
     }
 
-    while (!operators.isEmpty())
+    while (!operators.isEmpty())                    // 남은 연산 처리
         executeTopOperation(numbers, operators);
 
-    return numbers.isEmpty() ? 0 : numbers.last();
+    return numbers.isEmpty() ? 0 : numbers.last(); // 계산 결과 반환
 }
 
-void MainWindow::executeTopOperation(QList<double> &numbers, QList<QChar> &operators)
+void MainWindow::executeTopOperation(QList<double> &numbers, QList<QChar> &operators)       // 스택에서 숫자 두 개와 연산자를 꺼내 해당 연산을 수행하고 결과를 다시 스택에 추가
 {
     if (numbers.size() < 2) return;
 
-    double right = numbers.takeLast();
-    double left = numbers.takeLast();
-    QChar op = operators.takeLast();
+    double right = numbers.takeLast();  // 오른쪽 피연산자
+    double left = numbers.takeLast();   // 왼쪽 피연산자
+    QChar op = operators.takeLast();    // 연산자
 
-    double result = 0;
+    double result = 0;                  // 연산자에 따라 적절한 연산 수행
     switch (op.toLatin1())
     {
-    case '+':
-        result = left + right;
-        break;
-    case '-':
-        result = left - right;
-        break;
-    case '*':
-        result = left * right;
-        break;
-    case '/':
-        result = left / right;
-        break;
+    case '+': result = left + right; break; // 덧셈
+    case '-': result = left - right; break; // 뺄셈
+    case '*': result = left * right; break; // 곱셈
+    case '/': result = left / right; break; // 나눗셈
     }
 
     numbers.append(result);
 }
 
-bool MainWindow::isOperator(QChar c)
+bool MainWindow::isOperator(QChar c)                    // 주어진 문자가 사칙연산자인지 확인
 {
     return QString("+-*/").contains(c);
 }
 
-int MainWindow::precedence(QChar op)
+int MainWindow::precedence(QChar op)                    // 연산자의 우선순위를 반환
 {
     if (op == '+' || op == '-') return 1;
     if (op == '*' || op == '/') return 2;
     return 0;
 }
 
-void MainWindow::handleBackspacePress()
+void MainWindow::handleBackspacePress()                 // 백스페이스의 기능
 {
     QString currentText = ui->lineEdit_input->text();
     if (!currentText.isEmpty())
@@ -282,34 +230,30 @@ void MainWindow::handleBackspacePress()
     }
 }
 
-void MainWindow::keyPressEvent(QKeyEvent *event)
+void MainWindow::keyPressEvent(QKeyEvent *event)                // 키보드 입력에 따라 계산기 버튼 클릭 애니메이션 실행
 {
     QPushButton *button = nullptr;
 
-    switch (event->key()) {
-    case Qt::Key_0:
-        button = (event->modifiers() & Qt::KeypadModifier) ? ui->pushButton00 : nullptr;
-        break;
-    case Qt::Key_1:
-        button = (event->modifiers() & Qt::KeypadModifier) ? ui->pushButton01 : nullptr;
-        break;
-    case Qt::Key_9:
-        button = (event->modifiers() & Qt::KeypadModifier) ? ui->pushButton09 : nullptr;
-        break;
-    case Qt::Key_Plus:
-        button = ui->pushButton_plus;
-        break;
-    case Qt::Key_Minus:
-        button = ui->pushButton_minus;
-        break;
-    case Qt::Key_Asterisk:
-        button = ui->pushButton_multiple;
-        break;
-    case Qt::Key_Slash:
-        button = ui->pushButton_division;
-        break;
+    if (event->key() >= Qt::Key_0 && event->key() <= Qt::Key_9)     // 숫자 키 처리
+    {
+        int num = event->key() - Qt::Key_0;                         // 키 코드를 숫자로 변환
+        QString buttonName = QString("pushButton0%1").arg(num);     // 버튼 객체 이름 생성
+        button = findChild<QPushButton*>(buttonName);               // 버튼 객체 찾기
+    }
+    else
+    {
+        // 사칙 연산 및 백스페이스 키 처리
+        QMap<int, QPushButton*> keyToButton = {
+            {Qt::Key_Plus, ui->pushButton_plus},           	// 더하기
+            {Qt::Key_Minus, ui->pushButton_minus},         	// 빼기
+            {Qt::Key_Asterisk, ui->pushButton_multiple},   	// 곱하기
+            {Qt::Key_Slash, ui->pushButton_division},      	// 나누기
+            {Qt::Key_Backspace, ui->pushButton_backspace}	// 백스페이스 기능
+        };
+        button = keyToButton.value(event->key(), nullptr);  // 해당 키에 맞는 버튼 찾기
     }
 
-    if (button)
-        button->animateClick();
+    if (event->key() == Qt::Key_Escape) this->close();                                                      // ESC 키로 창 닫기
+    else if (event->key() == Qt::Key_C && (event->modifiers() & Qt::ControlModifier)) clearInputOutput();   // Ctrl+C로 내용 지우기
+    else if (button) button->animateClick();                                                                // 버튼 클릭 애니메이션 실행
 }

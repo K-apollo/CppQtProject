@@ -18,6 +18,7 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow(QWidget *parent = nullptr);
+
     ~MainWindow();
 
 private slots:
@@ -34,5 +35,7 @@ private:
     bool isOperator(QChar c); 													// 연산자 확인
     int precedence(QChar op); 													// 연산자 우선순위
     void keyPressEvent(QKeyEvent *event); 										// 키 이벤트 처리
+    QTimer *eraseTimer;                                                         // 지우기를 위한 타이머
+
 };
 #endif // MAINWINDOW_H
