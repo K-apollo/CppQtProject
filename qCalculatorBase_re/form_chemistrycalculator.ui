@@ -1,0 +1,1588 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form_ChemistryCalculator</class>
+ <widget class="QWidget" name="Form_ChemistryCalculator">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1584</width>
+    <height>351</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_2">
+   <item row="1" column="0">
+    <widget class="QGroupBox" name="groupBox_periodicTableOfChemicalElements">
+     <property name="title">
+      <string>원소주기율표</string>
+     </property>
+     <widget class="QPushButton" name="pushButton73_Tantalum">
+      <property name="geometry">
+       <rect>
+        <x>98</x>
+        <y>225</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Ra</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton97_Berkelium">
+      <property name="geometry">
+       <rect>
+        <x>872</x>
+        <y>264</y>
+        <width>80</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Tb</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton27_Cobalt">
+      <property name="geometry">
+       <rect>
+        <x>700</x>
+        <y>129</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Co</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton50_Tin">
+      <property name="geometry">
+       <rect>
+        <x>1130</x>
+        <y>161</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Sn</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton01_Hydrogen">
+      <property name="geometry">
+       <rect>
+        <x>12</x>
+        <y>33</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>H</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton103_Lawrencium">
+      <property name="geometry">
+       <rect>
+        <x>1388</x>
+        <y>264</y>
+        <width>80</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Lu</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton81_Thallium">
+      <property name="geometry">
+       <rect>
+        <x>872</x>
+        <y>225</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Rg</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton35_Bromine">
+      <property name="geometry">
+       <rect>
+        <x>1388</x>
+        <y>129</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Br</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton04_Beryllium">
+      <property name="geometry">
+       <rect>
+        <x>98</x>
+        <y>65</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Be</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton26_Iron">
+      <property name="geometry">
+       <rect>
+        <x>614</x>
+        <y>129</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Fe</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton22_Titanium">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>129</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Ti</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton83_Bismuth">
+      <property name="geometry">
+       <rect>
+        <x>1044</x>
+        <y>225</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Uut</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton96_Curium">
+      <property name="geometry">
+       <rect>
+        <x>786</x>
+        <y>264</y>
+        <width>80</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Cd</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton95_Americium">
+      <property name="geometry">
+       <rect>
+        <x>700</x>
+        <y>264</y>
+        <width>80</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Eu</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton57_Lanthanum">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>193</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Hf</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton29_Copper">
+      <property name="geometry">
+       <rect>
+        <x>872</x>
+        <y>129</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Cu</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton109_Meitnerium">
+      <property name="geometry">
+       <rect>
+        <x>614</x>
+        <y>295</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Pu</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton59_Praseodymium">
+      <property name="geometry">
+       <rect>
+        <x>442</x>
+        <y>193</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>W</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton100_Fermium">
+      <property name="geometry">
+       <rect>
+        <x>1130</x>
+        <y>264</y>
+        <width>80</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Er</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton06_Carbon">
+      <property name="geometry">
+       <rect>
+        <x>1130</x>
+        <y>65</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>C</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton47_Silver">
+      <property name="geometry">
+       <rect>
+        <x>872</x>
+        <y>161</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Ag</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton71_Lutetium">
+      <property name="geometry">
+       <rect>
+        <x>1474</x>
+        <y>193</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Rn</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton93_Neptunium">
+      <property name="geometry">
+       <rect>
+        <x>528</x>
+        <y>264</y>
+        <width>80</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Pm</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton99_Einsteinium">
+      <property name="geometry">
+       <rect>
+        <x>1044</x>
+        <y>264</y>
+        <width>80</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Ho</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton20_Calcium">
+      <property name="geometry">
+       <rect>
+        <x>98</x>
+        <y>129</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Ca</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton28_Nickel">
+      <property name="geometry">
+       <rect>
+        <x>786</x>
+        <y>129</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Ni</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton62_Samarium">
+      <property name="geometry">
+       <rect>
+        <x>700</x>
+        <y>193</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Ir</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton32_Germanium">
+      <property name="geometry">
+       <rect>
+        <x>1130</x>
+        <y>129</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Ge</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton33_Arsenic">
+      <property name="geometry">
+       <rect>
+        <x>1216</x>
+        <y>129</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>As</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton98_Californium">
+      <property name="geometry">
+       <rect>
+        <x>958</x>
+        <y>264</y>
+        <width>80</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Dy</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton53_Iodine">
+      <property name="geometry">
+       <rect>
+        <x>1388</x>
+        <y>161</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>I</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton111_Roentgenium">
+      <property name="geometry">
+       <rect>
+        <x>786</x>
+        <y>295</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Cm</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton94_Plutonium">
+      <property name="geometry">
+       <rect>
+        <x>614</x>
+        <y>264</y>
+        <width>80</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Sm</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton43_Technetium">
+      <property name="geometry">
+       <rect>
+        <x>528</x>
+        <y>161</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Tc</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton07_Nitrogen">
+      <property name="geometry">
+       <rect>
+        <x>1216</x>
+        <y>65</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>N</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton67_Holmium">
+      <property name="geometry">
+       <rect>
+        <x>1130</x>
+        <y>193</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Pb</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton19_Potassium">
+      <property name="geometry">
+       <rect>
+        <x>12</x>
+        <y>129</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>K</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton82_Lead">
+      <property name="geometry">
+       <rect>
+        <x>958</x>
+        <y>225</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Cn</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton66_Dysprosium">
+      <property name="geometry">
+       <rect>
+        <x>1044</x>
+        <y>193</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Tl</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton52_Tellurium">
+      <property name="geometry">
+       <rect>
+        <x>1302</x>
+        <y>161</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Te</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton86_Radon">
+      <property name="geometry">
+       <rect>
+        <x>1302</x>
+        <y>225</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Lv</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton101_Mendelevium">
+      <property name="geometry">
+       <rect>
+        <x>1216</x>
+        <y>264</y>
+        <width>80</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Tm</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton44_Ruthenium">
+      <property name="geometry">
+       <rect>
+        <x>614</x>
+        <y>161</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Ru</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton36_Krypton">
+      <property name="geometry">
+       <rect>
+        <x>1474</x>
+        <y>129</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Kr</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton70_Ytterbium">
+      <property name="geometry">
+       <rect>
+        <x>1388</x>
+        <y>193</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>At</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton116_Livermorium">
+      <property name="geometry">
+       <rect>
+        <x>1216</x>
+        <y>295</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Md</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton60_Neodymium">
+      <property name="geometry">
+       <rect>
+        <x>528</x>
+        <y>193</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Re</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton30_Zinc">
+      <property name="geometry">
+       <rect>
+        <x>958</x>
+        <y>129</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Zn</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton112_Copernicium">
+      <property name="geometry">
+       <rect>
+        <x>872</x>
+        <y>295</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Bk</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton31_Gallium">
+      <property name="geometry">
+       <rect>
+        <x>1044</x>
+        <y>129</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Ga</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton55_Cesium">
+      <property name="geometry">
+       <rect>
+        <x>12</x>
+        <y>193</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Cs</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton54_Xenon">
+      <property name="geometry">
+       <rect>
+        <x>1474</x>
+        <y>161</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Xe</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton17_Chlorine">
+      <property name="geometry">
+       <rect>
+        <x>1388</x>
+        <y>97</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Cl</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton38_Strontium">
+      <property name="geometry">
+       <rect>
+        <x>98</x>
+        <y>161</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Sr</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton91_Protactinium">
+      <property name="geometry">
+       <rect>
+        <x>356</x>
+        <y>264</y>
+        <width>80</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Pr</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton41_Niobium">
+      <property name="geometry">
+       <rect>
+        <x>356</x>
+        <y>161</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Nb</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton13_Aluminum">
+      <property name="geometry">
+       <rect>
+        <x>1044</x>
+        <y>97</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Al</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton92_Uranium">
+      <property name="geometry">
+       <rect>
+        <x>442</x>
+        <y>264</y>
+        <width>80</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Nd</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton118_Oganesson">
+      <property name="geometry">
+       <rect>
+        <x>1388</x>
+        <y>295</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Lr</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton58_Cerium">
+      <property name="geometry">
+       <rect>
+        <x>356</x>
+        <y>193</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Ta</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton11_Sodium">
+      <property name="geometry">
+       <rect>
+        <x>12</x>
+        <y>97</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Na</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton40_Zirconium">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>161</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Zr</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton12_Magnesium">
+      <property name="geometry">
+       <rect>
+        <x>98</x>
+        <y>97</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Mg</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton49_Indium">
+      <property name="geometry">
+       <rect>
+        <x>1044</x>
+        <y>161</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>In</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton88_Radium">
+      <property name="geometry">
+       <rect>
+        <x>1474</x>
+        <y>225</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Uuo</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton106_Seaborgium">
+      <property name="geometry">
+       <rect>
+        <x>356</x>
+        <y>295</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Pa</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton14_Silicon">
+      <property name="geometry">
+       <rect>
+        <x>1130</x>
+        <y>97</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Si</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton114_Flerovium">
+      <property name="geometry">
+       <rect>
+        <x>1044</x>
+        <y>295</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Es</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton02_Helium">
+      <property name="geometry">
+       <rect>
+        <x>1474</x>
+        <y>33</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>He</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton79_Gold">
+      <property name="geometry">
+       <rect>
+        <x>700</x>
+        <y>225</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Mt</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton48_Cadmium">
+      <property name="geometry">
+       <rect>
+        <x>958</x>
+        <y>161</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Cd</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton39_Yttrium">
+      <property name="geometry">
+       <rect>
+        <x>184</x>
+        <y>161</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Y</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton110_Darmstadtium">
+      <property name="geometry">
+       <rect>
+        <x>700</x>
+        <y>295</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Am</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton113_Nihonium">
+      <property name="geometry">
+       <rect>
+        <x>958</x>
+        <y>295</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Cf</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton63_Europium">
+      <property name="geometry">
+       <rect>
+        <x>786</x>
+        <y>193</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Pt</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton09_Fluorine">
+      <property name="geometry">
+       <rect>
+        <x>1388</x>
+        <y>65</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>F</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton15_Phosphorus">
+      <property name="geometry">
+       <rect>
+        <x>1216</x>
+        <y>97</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>P</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton107_Bohrium">
+      <property name="geometry">
+       <rect>
+        <x>442</x>
+        <y>295</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>U</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton77_Iridium">
+      <property name="geometry">
+       <rect>
+        <x>528</x>
+        <y>225</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Bh</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton105_Dubnium">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>295</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Th</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton65_Terbium">
+      <property name="geometry">
+       <rect>
+        <x>958</x>
+        <y>193</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Hg</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton24_Chromium">
+      <property name="geometry">
+       <rect>
+        <x>442</x>
+        <y>129</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Cr</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton64_Gadolinium">
+      <property name="geometry">
+       <rect>
+        <x>872</x>
+        <y>193</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Au</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton46_Palladium">
+      <property name="geometry">
+       <rect>
+        <x>786</x>
+        <y>161</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Pd</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton72_Hafnium">
+      <property name="geometry">
+       <rect>
+        <x>12</x>
+        <y>225</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Fr</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton05_Boron">
+      <property name="geometry">
+       <rect>
+        <x>1044</x>
+        <y>65</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>B</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton25_Manganese">
+      <property name="geometry">
+       <rect>
+        <x>528</x>
+        <y>129</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Mn</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton90_Thorium">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>264</y>
+        <width>80</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Ce</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton104_Rutherfordium">
+      <property name="geometry">
+       <rect>
+        <x>184</x>
+        <y>295</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Ac</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton108_Hassium">
+      <property name="geometry">
+       <rect>
+        <x>528</x>
+        <y>295</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Np</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton21_Scandium">
+      <property name="geometry">
+       <rect>
+        <x>184</x>
+        <y>129</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Sc</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton18_Argon">
+      <property name="geometry">
+       <rect>
+        <x>1474</x>
+        <y>97</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Ar</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton61_Promethium">
+      <property name="geometry">
+       <rect>
+        <x>614</x>
+        <y>193</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Os</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton115_Moscovium">
+      <property name="geometry">
+       <rect>
+        <x>1130</x>
+        <y>295</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Fm</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton78_Platinum">
+      <property name="geometry">
+       <rect>
+        <x>614</x>
+        <y>225</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Hs</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton84_Polonium">
+      <property name="geometry">
+       <rect>
+        <x>1130</x>
+        <y>225</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Fl</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton10_Neon">
+      <property name="geometry">
+       <rect>
+        <x>1474</x>
+        <y>65</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Ne</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton16_Sulfur">
+      <property name="geometry">
+       <rect>
+        <x>1302</x>
+        <y>97</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>S</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton45_Rhodium">
+      <property name="geometry">
+       <rect>
+        <x>700</x>
+        <y>161</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Rh</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton74_Tungsten">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>225</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Rf</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton87_Francium">
+      <property name="geometry">
+       <rect>
+        <x>1388</x>
+        <y>225</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Uus</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton76_Osmium">
+      <property name="geometry">
+       <rect>
+        <x>442</x>
+        <y>225</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Sg</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton69_Thulium">
+      <property name="geometry">
+       <rect>
+        <x>1302</x>
+        <y>193</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Po</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton03_Lithium">
+      <property name="geometry">
+       <rect>
+        <x>12</x>
+        <y>65</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Li</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton23_Vanadium">
+      <property name="geometry">
+       <rect>
+        <x>356</x>
+        <y>129</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>V</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton56_Barium">
+      <property name="geometry">
+       <rect>
+        <x>98</x>
+        <y>193</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Ba</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton85_Astatine">
+      <property name="geometry">
+       <rect>
+        <x>1216</x>
+        <y>225</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Uup</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton68_Erbium">
+      <property name="geometry">
+       <rect>
+        <x>1216</x>
+        <y>193</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Bi</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton51_Antimony">
+      <property name="geometry">
+       <rect>
+        <x>1216</x>
+        <y>161</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Sb</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton08_Oxygen">
+      <property name="geometry">
+       <rect>
+        <x>1302</x>
+        <y>65</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>O</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton102_Nobelium">
+      <property name="geometry">
+       <rect>
+        <x>1302</x>
+        <y>264</y>
+        <width>80</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Yb</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton117_Tennessine">
+      <property name="geometry">
+       <rect>
+        <x>1302</x>
+        <y>295</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>No</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton37_Rubidium">
+      <property name="geometry">
+       <rect>
+        <x>12</x>
+        <y>161</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Rb</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton80_Mercury">
+      <property name="geometry">
+       <rect>
+        <x>786</x>
+        <y>225</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Ds</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton34_Selenium">
+      <property name="geometry">
+       <rect>
+        <x>1302</x>
+        <y>129</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Se</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton75_Rhenium">
+      <property name="geometry">
+       <rect>
+        <x>356</x>
+        <y>225</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Db</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton42_Molybdenum">
+      <property name="geometry">
+       <rect>
+        <x>442</x>
+        <y>161</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Mo</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton89_Actinium">
+      <property name="geometry">
+       <rect>
+        <x>184</x>
+        <y>264</y>
+        <width>80</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>La</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_120">
+      <property name="geometry">
+       <rect>
+        <x>356</x>
+        <y>33</y>
+        <width>80</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>⇒</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_121">
+      <property name="geometry">
+       <rect>
+        <x>442</x>
+        <y>33</y>
+        <width>40</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

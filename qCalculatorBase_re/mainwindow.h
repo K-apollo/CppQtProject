@@ -27,6 +27,7 @@ private slots:
     void clearInputOutput(); 													// 입력과 출력 클리어
     void handleParenthesisPress(); 												// 괄호 버튼 처리
     void handleBackspacePress(); 												// 백스페이스 처리
+    void onItemButton(const QModelIndex &index);
 
 private:
     Ui::MainWindow *ui;
@@ -37,5 +38,6 @@ private:
     void keyPressEvent(QKeyEvent *event); 										// 키 이벤트 처리
     QTimer *eraseTimer;                                                         // 지우기를 위한 타이머
 
+    QWidget *chemistryCalculatorWidget = nullptr;                               // 화학 계산기 위젯 포인터
 };
 #endif // MAINWINDOW_H

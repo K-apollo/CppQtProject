@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+#include <QScreen>
+
 #include <QtMath>
 #include <QRegularExpression>
 #include <QtWidgets>
@@ -10,13 +12,18 @@
 #include <QFile>
 #include <QTime>
 #include <QTimer>
+#include <QUiLoader>
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
-    // 버튼 클릭 시그널을 handleButtonPress 슬롯에 연결하는 람다 함수
-    auto connectButton = [this](QPushButton* button)
+    this->setMinimumSize(480, 360);                             // 최소 윈도우 크기 설정
+    QScreen *screen = QApplication::screens().at(0);            // 주 모니터의 크기 가져옴
+    QSize screenSize = screen->availableSize();                 // 최대 윈도우 크기를 화면 크기 설정
+    this->setMaximumSize(screenSize);
+
+    auto connectButton = [this](QPushButton* button)            // 버튼 클릭 시그널을 handleButtonPress 슬롯에 연결하는 람다 함수
     {
         connect(button, &QPushButton::clicked, this, &MainWindow::handleButtonPress);
     };
@@ -45,7 +52,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect(ui->pushButton_backspace, &QPushButton::pressed, eraseTimer, static_cast<void (QTimer::*)()>(&QTimer::start));  // 백스페이스 버튼의 pressed와 released 신호를 타이머의 시작과 정지에 연결
     connect(ui->pushButton_backspace, &QPushButton::released, eraseTimer, &QTimer::stop);
 
-	// Social Calculator
+    // Social Calculator
     QStringList items = {"Sports", "Math", "Chemistry", "Life", "Tax", "Income", "Time", "Unit"};
     items.sort();
     QStandardItemModel *model = new QStandardItemModel(this);
@@ -58,6 +65,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->treeView_socialCalculator->setModel(model);
     ui->treeView_socialCalculator->setSortingEnabled(true);
     ui->treeView_socialCalculator->sortByColumn(0, Qt::DescendingOrder);
+    connect(ui->treeView_socialCalculator, &QTreeView::clicked, this, &MainWindow::onItemButton);
 }
 
 MainWindow::~MainWindow()
@@ -256,4 +264,56 @@ void MainWindow::keyPressEvent(QKeyEvent *event)                // 키보드 입
     if (event->key() == Qt::Key_Escape) this->close();                                                      // ESC 키로 창 닫기
     else if (event->key() == Qt::Key_C && (event->modifiers() & Qt::ControlModifier)) clearInputOutput();   // Ctrl+C로 내용 지우기
     else if (button) button->animateClick();                                                                // 버튼 클릭 애니메이션 실행
+}
+
+void MainWindow::onItemButton(const QModelIndex &index)
+{
+    if (!index.isValid())
+        return;
+
+    QString itemName = index.data(Qt::DisplayRole).toString();
+
+    if (itemName == "Sports")
+    {
+
+    }
+    else if (itemName == "Chemistry")
+    {
+        if (!chemistryCalculatorWidget)                                     // 아직 완료되지 않은 경우에만 로드 및 표시
+        {
+            QUiLoader loader;
+            QFile file(":/form_chemistrycalculator.ui");                    // UI 파일에 경로 조정
+            file.open(QFile::ReadOnly);
+            chemistryCalculatorWidget = loader.load(&file, this);
+            file.close();
+        }
+        if (chemistryCalculatorWidget)
+        {
+            chemistryCalculatorWidget->show();
+        }
+    }
+    else if(itemName == "Income")
+    {
+
+    }
+    else if (itemName == "Life")
+    {
+
+    }
+    else if (itemName == "Tax")
+    {
+
+    }
+    else if(itemName == "Time")
+    {
+
+    }
+    else if(itemName == "Unit")
+    {
+
+    }
+    else if(itemName == "Function")
+    {
+
+    }
 }
