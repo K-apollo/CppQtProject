@@ -122,38 +122,20 @@ void MainWindow::onLogAnalysis()
 
     if (isChecked)
     {
-        ui->comboBox_currentFile->clear();
-        ui->comboBox_currentFile->addItem("None");
+        QString filePath = QFileDialog::getOpenFileName(this, tr("Open File"), QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation), tr("Text Files (*.txt);;All Files (*)"));
 
-        QString selectedFile = ui->comboBox_currentFile->currentText();
-        QString filePath = QFileDialog::getOpenFileName(this, tr("Open File"), "", tr("Text Files (*.txt);;All Files (*)"));
         if (!filePath.isEmpty())
         {
             QFile file(filePath);
             if (file.open(QIODevice::ReadOnly | QIODevice::Text))
             {
-                QTextCodec *codec = QTextCodec::codecForLocale();
-                QStringList codecs;
-                codecs << "UTF-8" << "Ansi" << "UTF-16 BE" << "UTF-16 LE" << "UTF-8(BOM)";
-                QString selectedCodec = QInputDialog::getItem(this, tr("Select Encoding"), tr("Encoding:"), codecs, 0, false);
-                if (!selectedCodec.isEmpty())
+                QTextStream in(&file);
+                ui->listWidget_fileContentOutput->clear();
+                while (!in.atEnd())
                 {
-                    codec = QTextCodec::codecForName(selectedCodec.toUtf8());
-                    QTextStream in(&file);
-                    in.setCodec(codec);
-                    ui->listWidget_fileContentOutput->clear();
-                    QFont font("Arial", 10);
-                    ui->listWidget_fileContentOutput->setFont(font);
-                    while (!in.atEnd())
-                    {
-                        QString line = in.readLine();
-                        QListWidgetItem *item = new QListWidgetItem(line);
-                        item->setTextAlignment(Qt::AlignLeft | Qt::AlignTop);
-                        item->setFlags(item->flags() & ~Qt::ItemIsEditable);
-                        ui->listWidget_fileContentOutput->addItem(item);
-                    }
+                    QString line = in.readLine();
+                    ui->listWidget_fileContentOutput->addItem(line);
                 }
-                file.close();
             }
         }
     }
