@@ -7,6 +7,9 @@
 #include <QDir>
 #include <QFileInfoList>
 #include <QTableWidgetItem>
+#include <QTextStream>
+#include <QFile>
+#include <QInputDialog> // 추가
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -28,7 +31,6 @@ private slots:
     void TableWidgetDirectoryFiles();
     void UpdateProgressBar(int value);
     void updateDirectoryContents();
-
     void onLogAnalysis();
 
 private:

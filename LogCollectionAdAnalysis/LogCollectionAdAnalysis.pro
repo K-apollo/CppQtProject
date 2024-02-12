@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui core5compat            # Qt 6에서 QtextCodec에 대한 core5 compat 추가
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
